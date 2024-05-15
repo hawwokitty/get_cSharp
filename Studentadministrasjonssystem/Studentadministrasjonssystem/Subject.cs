@@ -10,7 +10,7 @@
         public void SkrivUtInfo()
         {
             Console.WriteLine($"Fagkode: {SubjectCode}");
-            Console.WriteLine($"Fagnavn: {SubjectName}");
+            Console.WriteLine($"Fag: {SubjectName}");
             Console.WriteLine($"Fagnavn: {Program}");
             Console.WriteLine($"Studiepoeng: {SubjectPoints}");
 
