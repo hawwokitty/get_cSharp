@@ -5,12 +5,11 @@
         public Student Student { get; set; } = student;
         public Subject Subject { get; set; } = subject;
         public int StudentGrade { get; set; } = grade;
-        public static void SkrivUtInfo(Student student, Subject subject, Grade[] grades)
+        public void SkrivUtInfo()
         {
-            Grade studentGrade = Array.Find(grades, grade => grade.Student == student);
-            Console.WriteLine($"Student: {student.Name}");
-            Console.WriteLine($"Fag: {subject.SubjectName}");
-            Console.WriteLine($"Karakter: {studentGrade.StudentGrade}");
+            Console.WriteLine($"Student: {Student.Name}");
+            Console.WriteLine($"Fag: {Subject.SubjectName}");
+            Console.WriteLine($"Karakter: {StudentGrade}");
 
         }
     }

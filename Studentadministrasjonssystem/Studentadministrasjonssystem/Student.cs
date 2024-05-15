@@ -1,57 +1,51 @@
-﻿namespace Studentadministrasjonssystem
+﻿using System.Linq;
+
+namespace Studentadministrasjonssystem
 {
-    class Student(string name, int age, string program, int studentId, Subject[] subjects)
+    class Student(string name, int age, string program, int studentId, List<Subject> subjects)
     {
         public string Name { get; set; } = name;
         public int Age { get; set; } = age;
         public string Program { get; set; } = program;
         public int StudentId { get; set; } = studentId;
-        public Subject[] Subjects { get; set; } = subjects;
+        public List<Subject> Subjects { get; set; } = subjects;
 
-        public static void SkrivUtInfo(int studentId, Student[] students)
+        public void SkrivUtInfo()
         {
-            Student student = Array.Find(students, student => student.StudentId == studentId);
-            Console.WriteLine($"Navn: {student.Name}");
-            Console.WriteLine($"Alder: {student.Age}");
-            Console.WriteLine($"Program: {student.Program}");
-            Console.WriteLine($"Student ID: {student.StudentId}");
+            Console.WriteLine($"Navn: {Name}");
+            Console.WriteLine($"Alder: {Age}");
+            Console.WriteLine($"Program: {Program}");
+            Console.WriteLine($"Student ID: {StudentId}");
             Console.WriteLine("Fag:");
-            foreach (var subject in student.Subjects)
+            foreach (var subject in Subjects)
             {
                 Console.WriteLine($"- {subject.SubjectName}");
             }
 
         }
 
-        public static void BeregnGjennomsnitt(int studentId, Student[] students, Grade[] grades)
+        public void BeregnGjennomsnitt(List<Grade> grades)
         {
-            Student student = Array.Find(students, student => student.StudentId == studentId);
-            int[] StudentsGrades = new int[student.Subjects.Length];
-            for (int i = 0; i < grades.Length; i++)
+            int sumOfGrades = 0;
+            int count = 0;
+
+            foreach (var grade in grades)
             {
-                if (student == grades[i].Student)
+                if (grade.Student == this)
                 {
-                    StudentsGrades[i] = grades[i].StudentGrade;
+                    sumOfGrades += grade.StudentGrade;
+                    count++;
                 }
             }
 
-            int SumOfGrades = StudentsGrades.Sum();
-            int AverageGrade = SumOfGrades / StudentsGrades.Length;
-
-                Console.WriteLine($@"{AverageGrade}");
-            
+            double averageGrade = (double)sumOfGrades / count;
+            Console.WriteLine($"Gjennomsnittskarakter: {averageGrade}");
         }
 
-        public static void BeregnStudiepoeng(int studentId, Student[] students, Subject[] subjects)
+        public void BeregnStudiepoeng()
         {
-            Student student = Array.Find(students, student => student.StudentId == studentId);
-            int SumOfStudiepoeng = 0;
-            for (int i = 0; i < student.Subjects.Length; i++)
-            {
-                SumOfStudiepoeng += student.Subjects[i].SubjectPoints;
-            }
-
-            Console.WriteLine($"{student.Name} sine studiepoeng er: {SumOfStudiepoeng}");
+            int sumOfStudiepoeng = Subjects.Sum(subject => subject.SubjectPoints);
+            Console.WriteLine($"{Name} sine studiepoeng er: {sumOfStudiepoeng}");
         }
     }
 }
