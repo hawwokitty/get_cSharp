@@ -26,7 +26,7 @@ void RunSignUp()
     var newUser = new Users(username, email, password, bio);
     var userList = Users.UserList();
     userList.Add(newUser);
-    Users.UserList().Add(newUser);
+    //Users.UserList().Add(newUser);
     Console.WriteLine($"{newUser.Name} has been added.");
     RunLogIn();
     
@@ -56,13 +56,13 @@ void RunMenu()
 {
     Console.WriteLine("What would you like to do?");
     Console.WriteLine("1. View my friends (after you pick this you can choose to remove friend or view their info)");
-    Console.WriteLine("2. Add new friend");
+    Console.WriteLine("2. View all users (after you pick this you can choose to add them as a friend)");
     Console.WriteLine("Please type 1 or 2");
     int input = Convert.ToInt32(Console.ReadLine());
     switch (input)
     {
         case 1: RunShowFriends(); break;
-        case 2: RunAddFriend(); break;
+        case 2: RunShowUsers(); break;
         default:
             RunMenu(); break;
     }
@@ -70,10 +70,66 @@ void RunMenu()
 
 void RunShowFriends()
 {
-
+    var friendList = Users.AddFriendList();
+    if (friendList.Count == 0)
+    {
+        Console.WriteLine("You have no friends added yet.");
+        RunMenu();
+    }
+    else
+    {
+        foreach (var friend in friendList)
+        {
+            Console.WriteLine(friend.Name);
+        }
+        Console.WriteLine("What would you like to do?");
+        Console.WriteLine("1. Remove a friend");
+        Console.WriteLine("2. See a friends info");
+        Console.WriteLine("Please type 1 or 2");
+        int input = Convert.ToInt32(Console.ReadLine());
+        switch (input)
+        {
+            case 1: RunDeleteFriend(); break;
+            case 2: RunSeeFriendsInfo(); break;
+            default:
+                RunMenu(); break;
+        }
+    }
 }
 
-void RunAddFriend()
+void RunShowUsers()
 {
+    var userList = Users.UserList();
+    foreach (var user in userList)
+    {
+        Console.WriteLine(user.Name);
+    }
 
+    Console.WriteLine("Which user would you like to add as a friend? Please type their name:");
+    string input = Console.ReadLine();
+    Users newFriend = userList.Find(p => p.Name == input);
+
+    if (newFriend != null)
+    {
+        Users.AddFriendList().Add(newFriend);
+        Console.WriteLine($"Successfully added {input} as your friend!");
+    }
+    else
+    {
+        Console.WriteLine($"User with name {input} not found.");
+    }
+
+    Console.WriteLine("What would you like to do now?");
+    Console.WriteLine("1. View my friends");
+    Console.WriteLine("2. See user list again");
+    Console.WriteLine("Please type 1 or 2");
+    int input2 = Convert.ToInt32(Console.ReadLine());
+    switch (input2)
+    {
+        case 1: RunShowFriends(); break;
+        case 2: RunShowUsers(); break;
+        default:
+            RunMenu(); break;
+    }
 }
+

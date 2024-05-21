@@ -2,11 +2,11 @@
 {
     internal class Users(string name, string email, string password, string bio)
     {
-        public string Name { get; set; } = name;
-        private string Email { get; set; } = email;
-        private string Password { get; set; } = password;
+        public string Name { get; private set; } = name;
+        private string Email { get; } = email;
+        private string Password { get; } = password;
         private string Bio { get; set; } = bio;
-        private static List<Friends> friendList = AddFriend();
+        private static List<Users> friendList = new ();
         private static List<Users> usersList = InitializeUserList();
 
         internal static List<Users> UserList()
@@ -24,7 +24,7 @@
             };
         }
 
-        internal static List<Friends> AddFriend()
+        internal static List<Users> AddFriendList()
         {
             return friendList;
         }
