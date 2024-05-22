@@ -27,7 +27,7 @@
             }
         }
 
-        public void Recharge()
+        private void Recharge()
         {
             Stamina = stamina;
         }
