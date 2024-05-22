@@ -20,7 +20,7 @@ namespace HarryPotter
             var houseInput = Console.ReadLine();
             string house = RunGetHouse(houseInput);
             Console.WriteLine($"You picked: {house}");
-            Console.WriteLine("Now please pick your wand:");
+            Console.WriteLine("You can now buy a wand here in the shop. Please pick the wand you would like:");
             for (int i = 0; i < wizardShop._wandTypes.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {wizardShop._wandTypes[i]}");
@@ -29,7 +29,7 @@ namespace HarryPotter
             int wandInput = Convert.ToInt32(Console.ReadLine());
             string wand = RunGetWand(wandInput, wizardShop);
             Console.WriteLine($"You picked: {wand}");
-            Console.WriteLine("Now please pick your animal:");
+            Console.WriteLine("You may now buy an animal! Please pick your animal:");
             for (int i = 0; i < wizardShop._animalsList.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {wizardShop._animalsList[i]}");
@@ -41,6 +41,10 @@ namespace HarryPotter
             Wizard wizard = new Wizard(name, house, wand, animal);
             string wizardInfo = wizard.GetWizardInfo();
             Console.WriteLine($"Now this is you: {wizardInfo}");
+            Console.WriteLine("Would you like to perform magic spells? Go ahead and type a spell and see if you are able!");
+            string inputSpell = Console.ReadLine();
+            var magic = new Magic();
+            magic.PerformMagicSpell(inputSpell);
 
         }
 
