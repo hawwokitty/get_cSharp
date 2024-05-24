@@ -4,7 +4,7 @@ namespace HarryPotter
 {
     internal class Admin
     {
-        public List<string> HouseList = new()
+        private List<string> _houseList = new()
         {
             "Hufflepuff",
             "Gryffindor",
@@ -19,11 +19,11 @@ namespace HarryPotter
             Console.WriteLine("What is your name?");
             var name = Console.ReadLine();
             Console.WriteLine("Which house do you belong to?");
-            for (int i = 0; i < HouseList.Count; i++)
+            for (int i = 0; i < _houseList.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. {HouseList[i]}");
+                Console.WriteLine($"{i + 1}. {_houseList[i]}");
             }
-            Console.WriteLine($"Please type 1-{HouseList.Count}:");
+            Console.WriteLine($"Please type 1-{_houseList.Count}:");
             string house = RunGetHouse();
             Console.WriteLine($"You picked: {house}");
             Console.WriteLine("You can now buy a wand here in the shop. Please pick the wand you would like:");
@@ -107,10 +107,10 @@ namespace HarryPotter
 
             while (!isValid)
             {
-                if (int.TryParse(houseInput, out int houseIndex) && houseIndex >= 1 && houseIndex <= HouseList.Count)
+                if (int.TryParse(houseInput, out int houseIndex) && houseIndex >= 1 && houseIndex <= _houseList.Count)
                 {
                     houseIndex -= 1;
-                    house = HouseList[houseIndex];
+                    house = _houseList[houseIndex];
                     isValid = true;
                 }
                 else
