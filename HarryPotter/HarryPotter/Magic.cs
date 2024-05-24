@@ -18,20 +18,17 @@
 
         public void PerformMagicSpell(string spell)
         {
-            string performSpell = "";
-            for (int i = 0; i < _harryPotterSpells.Count; i++)
+            string performSpell = _harryPotterSpells.Find(s => s.ToLower() == spell.ToLower());
+            if (performSpell != null)
             {
-                if (spell.ToLower() == _harryPotterSpells[i].ToLower())
-                {
-                    performSpell = $"You performed {_harryPotterSpells[i]}!";
-                    break;
-                }
-                else
-                {
-                    performSpell = "You did not enter a valid spell!";
-                }
+                Console.WriteLine($"You performed {performSpell}");
             }
-            Console.WriteLine(performSpell);
+            else
+            {
+                Console.WriteLine("You did not enter a valid spell! Please try again:");
+                spell = Console.ReadLine();
+                PerformMagicSpell(spell);
+            }
         }
     }
 }

@@ -2,12 +2,7 @@
 {
     internal class WizardShop
     {
-        public readonly List<string> _wandTypes = InitializeWandTypesList();
-        public readonly List<string> _animalsList = InitializeAnimalsList();
-
-        private static List<string> InitializeWandTypesList()
-        {
-        return new List<string>
+        public List<string> WandTypes = new()
         {
             "Standard Wand",
             "Specialty Wood Wands",
@@ -20,9 +15,9 @@
             "Customized Wands",
             "Antique Wands"
         };
-        }private static List<string> InitializeAnimalsList()
-        {
-        return new List<string>
+        
+    
+        public List<string> AnimalsList = new()
         {
             "Owl",
             "Rat",
@@ -31,6 +26,6 @@
             "Frog",
             "Pygmy Puff",
         };
-        }
     }
+    
 }
