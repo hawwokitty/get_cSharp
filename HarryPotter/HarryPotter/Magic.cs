@@ -16,19 +16,33 @@
             "Crucio"            // Cruciatus Curse
         };
 
-        public void PerformMagicSpell(string spell)
+        public void PerformMagicSpell(string spell, Wizard wizard)
         {
-            string performSpell = _harryPotterSpells.Find(s => s.ToLower() == spell.ToLower());
-            if (performSpell != null)
+            if (wizard.Wand != "None")
             {
-                Console.WriteLine($"You performed {performSpell}");
+                while (true)
+                {
+                    string performSpell = _harryPotterSpells.Find(s => s.ToLower() == spell.ToLower());
+
+                    if (performSpell != null)
+                    {
+                        Console.WriteLine($"You performed {performSpell}");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You did not enter a valid spell! Please try again:");
+                        spell = Console.ReadLine();
+                    }
+                }
             }
             else
             {
-                Console.WriteLine("You did not enter a valid spell! Please try again:");
-                spell = Console.ReadLine();
-                PerformMagicSpell(spell);
+                Console.WriteLine("You need a wand to perform magic!");
+                WizardShop shop = new WizardShop();
+                shop.EnterShop(wizard);
             }
         }
+
     }
 }
