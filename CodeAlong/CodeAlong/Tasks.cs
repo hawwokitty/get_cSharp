@@ -7,7 +7,7 @@
         private List<Tasks> _listOfTasks = new ();
         private bool _IsRunning = true;
 
-        public Tasks(string task, string time) : this()
+        private Tasks(string task, string time) : this()
         {
             TaskTitle = task;
             Time = time;
