@@ -2,7 +2,7 @@
 {
     internal class Room
     {
-        List<string> rooms = new List<string>
+        public List<string> rooms = new List<string>
         {
             "Living Room",
             "Kitchen",
