@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UnitTest.Practice
+﻿namespace UnitTest.Practice
 {
     internal class TrekkFraTest
     {
@@ -13,12 +7,12 @@ namespace UnitTest.Practice
         public void TrekkFraToPositiveTall()
         {
             int result = _kalkulator.TrekkFra(3, 2);
-            Assert.AreEqual(1, result);
+            Assert.That(result, Is.EqualTo(1));
         }
         public void TrekkFraToNegativeTall()
         {
             int result = _kalkulator.TrekkFra(-3, -2);
-            Assert.AreEqual(-1, result);
+            Assert.That(result, Is.EqualTo(-1));
         }
     }
 }

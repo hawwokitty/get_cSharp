@@ -1,23 +1,32 @@
 ﻿namespace Sims
 {
-    internal class FamilyMember(string firstName, string lastName, bool isAdult, string gender)
+    internal class FamilyMember
     {
-        public string FirstName { get; private set; } = firstName;
-        public string LastName { get; private set;} = lastName;
-        public bool IsAdult { get; private set; } = isAdult;
-        public string Gender { get; private set;} = gender;
+        private string? FirstName { get; set; }
+        private string? LastName { get; set;}
+        private bool IsAdult { get; set; } 
+        private string? Gender { get; set;}
 
-        public FamilyMember() : this("None", "None", false, "None")
+        public FamilyMember(string? firstName, string? lastName, bool isAdult, string gender)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            IsAdult = isAdult;
+            Gender = gender;
+        }
+
+        public FamilyMember()
         {
             
         }
 
         public void CreateFamilyMember()
         {
-            string newFirstName = GetFirstName();
-            string newLastName = GetLastName();
+            string? newFirstName = GetName("What is the character's first name?");
+            string? newLastName = GetName("What is the character's last name?");
             bool newIsAdult = GetIsAdult();
             string newGender = GetGender();
+            FamilyMember familyMember = new FamilyMember(newFirstName, newLastName, newIsAdult, newGender);
         }
 
         private string GetGender()
@@ -28,7 +37,7 @@
             Console.WriteLine("3. Other");
             bool isValid = false;
             string newGender = "";
-            string input = Console.ReadLine();
+            string? input = Console.ReadLine();
 
             while (!isValid)
             {
@@ -38,14 +47,11 @@
                     {
                         newGender = "Male";
                     }
-                    else if (choice == 2)
+                    else
                     {
                         newGender = "Female";
                     }
-                    else if (choice == 3)
-                    {
-                        newGender = "Other";
-                    }
+
                     isValid = true;
                 }
                 else
@@ -64,7 +70,7 @@
             Console.WriteLine("2. A child");
             bool isValid = false;
             bool newIsAdult = false;
-            string input = Console.ReadLine();
+            string? input = Console.ReadLine();
 
             while (!isValid)
             {
@@ -74,10 +80,11 @@
                     {
                         newIsAdult = true;
                     }
-                    else if (choice == 2)
+                    else
                     {
                         newIsAdult = false;
                     }
+
                     isValid = true;
                 }
                 else
@@ -90,18 +97,12 @@
             return newIsAdult;
         }
 
-        private string GetLastName()
+        private string? GetName(string question)
         {
-            Console.WriteLine("What is the characters last name?");
-            string newLastName = Console.ReadLine();
-            return newLastName;
+            Console.WriteLine(question);
+            string? name = Console.ReadLine();
+            return name;
         }
 
-        private string GetFirstName()
-        {
-            Console.WriteLine("What is the characters first name?");
-            string newFirstName = Console.ReadLine();
-            return newFirstName; 
-        }
     }
 }

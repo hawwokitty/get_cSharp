@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UnitTest.Practice
+﻿namespace UnitTest.Practice
 {
     internal class MultipliserTest
     {
@@ -13,17 +7,17 @@ namespace UnitTest.Practice
         public void MultipliserToPositiveTall()
         {
             int result = _kalkulator.Multipliser(3, 2);
-            Assert.AreEqual(6, result);
+            Assert.That(result, Is.EqualTo(6));
         }
         public void MultipliserToNegativeTall()
         {
             int result = _kalkulator.Multipliser(-3, -2);
-            Assert.AreEqual(6, result);
+            Assert.That(result, Is.EqualTo(6));
         }
         public void MultipliserMedNull()
         {
             int result = _kalkulator.Multipliser(-3, 0);
-            Assert.AreEqual(0, result);
+            Assert.That(result, Is.EqualTo(0));
         }
     }
 }

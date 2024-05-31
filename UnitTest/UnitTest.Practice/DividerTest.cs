@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UnitTest.Practice
+﻿namespace UnitTest.Practice
 {
     internal class DividerTest
     {
@@ -12,12 +6,12 @@ namespace UnitTest.Practice
         public void DividerToPositiveTall()
         {
             int result = _kalkulator.Divider(6, 2);
-            Assert.AreEqual(3, result);
+            Assert.That(result, Is.EqualTo(3));
         }
         public void DividerToNegativeTall()
         {
             int result = _kalkulator.Divider(-6, -2);
-            Assert.AreEqual(3, result);
+            Assert.That(result, Is.EqualTo(3));
         }
         public void DividerMedNull()
         {

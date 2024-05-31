@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UnitTest.Practice
+﻿namespace UnitTest.Practice
 {
     internal class LeggSammenTest
     {
@@ -14,11 +8,11 @@ namespace UnitTest.Practice
         public void LeggSammenToPositiveTall()
         {
             int result = _kalkulator.LeggSammen(3, 2);
-            Assert.AreEqual(5, result);
+            Assert.That(result, Is.EqualTo(5));
         }public void LeggSammenToNegativeTall()
         {
             int result = _kalkulator.LeggSammen(-6, -2);
-            Assert.AreEqual(-8, result);
+            Assert.That(result, Is.EqualTo(-8));
         }
     }
 }

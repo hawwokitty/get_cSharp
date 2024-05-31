@@ -4,10 +4,11 @@ namespace Sims
 {
     internal class Furniture
     {
-        private string Room { get; set; } 
-        private string FurnitureName { get; set; }
-        private string[] Actions { get; set; }
+        private string? Room { get; set; } 
+        private string? FurnitureName { get; set; }
+        private string[]? Actions { get; set; }
 
+        private List<Furniture>? _furniture;
         public Furniture(string room, string furniture, params string[] action)
         {
             Room = room;
@@ -19,7 +20,6 @@ namespace Sims
             
         }
 
-        private List<Furniture> _furniture;
 
         public void InitializeFurniture()
         {
