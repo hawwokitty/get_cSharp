@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abaxrekruttering", "Abaxrekruttering\Abaxrekruttering.csproj", "{A1AF7D20-CB59-46E3-837E-9C93959934DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1AF7D20-CB59-46E3-837E-9C93959934DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1AF7D20-CB59-46E3-837E-9C93959934DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1AF7D20-CB59-46E3-837E-9C93959934DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1AF7D20-CB59-46E3-837E-9C93959934DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F198651-A041-4243-BA4D-CED00E78C968}
+	EndGlobalSection
+EndGlobal
