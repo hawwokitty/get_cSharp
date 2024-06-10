@@ -1,23 +1,28 @@
-﻿namespace TextAdventure
+﻿using System;
+
+namespace TextAdventure
 {
-    internal class Task
+    internal class Task : Game
     {
-        protected string Title { get; set; }
+        public string Title { get; protected set; }
         public string Choice { get; private set; }
         protected string Description { get; set; }
-        protected string[] KeyWords { get; set; }
+        public string[] KeyWords { get; protected set; }
+        public bool CanProgress { get; private set; }
 
-        public Task(string title, string choice, string description, params string[] keyWords)
+        public Task(string title, string choice, string description, bool canProgress, params string[] keyWords)
         {
             Title = title;
             Choice = choice;
             Description = description;
+            CanProgress = canProgress;
             KeyWords = keyWords;
         }
 
         public virtual void DoTask()
         {
-            Console.WriteLine(Description);
+            console.PrintLine(Description);
         }
+
     }
 }

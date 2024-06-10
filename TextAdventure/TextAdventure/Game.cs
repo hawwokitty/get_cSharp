@@ -3,10 +3,6 @@
     internal class Game
     {
         protected ConsoleLines console = new ConsoleLines();
-        private Bedroom bedroom = new Bedroom();
-        private Kitchen kitchen = new Kitchen();
-        private LivingRoom livingRoom = new LivingRoom();
-        private Bathroom bathroom = new Bathroom();
 
         public void Run()
         {
@@ -17,64 +13,52 @@
 
         private void PlayGame()
         {
-            while (true)
+            RunBedroom();
+        }
+
+        private void RunBedroom()
+        {
+            Room room = new Bedroom();  // Use Bedroom for now
+            room.SetTasks();  // Initialize tasks for the room
+            console.PrintLine("You wake up in your bed for the 4th time this night, a little bit of light shines through your blinds letting you know it's probably morning. You're already dreading the day ahead but you need to make a choice, what do you do?");
+
+            bool canProgress = false;
+            while (!canProgress)
             {
-                console.PrintLine("Choose a room to enter:");
-                console.PrintLine("1. Bedroom");
-                console.PrintLine("2. Kitchen");
-                console.PrintLine("3. Living Room");
-                console.PrintLine("4. Bathroom");
-
-                if (int.TryParse(console.ReadLine(), out int roomChoice))
+                canProgress = DoUserChoice(room, "Wake Up in Bed");
+                if (!canProgress)
                 {
-                    switch (roomChoice)
-                    {
-                        case 1:
-                            bedroom.DisplayTasks(console);
-                            break;
-                        case 2:
-                            kitchen.DisplayTasks(console);
-                            break;
-                        case 3:
-                            livingRoom.DisplayTasks(console);
-                            break;
-                        case 4:
-                            bathroom.DisplayTasks(console);
-                            break;
-                        default:
-                            console.PrintLine("Invalid room choice. Try again.");
-                            continue;
-                    }
-
-                    console.PrintLine("Enter your choice:");
-                    if (int.TryParse(console.ReadLine(), out int taskChoice))
-                    {
-                        switch (roomChoice)
-                        {
-                            case 1:
-                                bedroom.PerformTask(taskChoice, console);
-                                break;
-                            case 2:
-                                kitchen.PerformTask(taskChoice, console);
-                                break;
-                            case 3:
-                                livingRoom.PerformTask(taskChoice, console);
-                                break;
-                            case 4:
-                                bathroom.PerformTask(taskChoice, console);
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        console.PrintLine("Invalid input. Please enter a number.");
-                    }
-                }
-                else
-                {
-                    console.PrintLine("Invalid input. Please enter a number.");
+                    console.PrintLine("That didn't get you far, what else would you like to try?");
                 }
             }
+
+            console.PrintLine("You manage to sleep for a little while longer, however you feel just as drained as before. This time when you wake up again you're ready to get on with your day, which room would you like to go to?");
+            bool canExitRoom = false;
+            while (!canExitRoom)
+            {
+                canExitRoom = DoUserChoice(room, "Move rooms");
+                if (!canExitRoom)
+                {
+                    console.PrintLine("You still need to choose a room. What would you like to do?");
+                }
+            }
+        }
+
+        private bool DoUserChoice(Room room, string title)
+        {
+            Task choice = null;
+            while (choice == null)
+            {
+                string userInput = console.ReadLine();
+                choice = room.FindTask(userInput, title);
+
+                if (choice == null)
+                {
+                    console.PrintLine("That's not a valid action. Please try again.");
+                }
+            }
+            choice.DoTask();
+            return choice.CanProgress;
         }
     }
 }
