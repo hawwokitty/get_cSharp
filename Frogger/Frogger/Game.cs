@@ -20,7 +20,7 @@ namespace Frogger
             Car car9 = new Car(5);
             Car car10 = new Car(5);
 
-            // Start the user input handling task
+            // Start the user input handling task (chat gpt help)
             Task.Run(() => HandleUserInput(frog));
 
             while (frog.Lives > 0)
@@ -37,7 +37,7 @@ namespace Frogger
                     ConsoleLines.Winner();
                 }
 
-                Thread.Sleep(100); // Adjust as needed to control the loop speed
+                Thread.Sleep(100);
             }
 
             ConsoleLines.GameOver();
@@ -92,7 +92,7 @@ namespace Frogger
                             break;
                     }
                 }
-                await Task.Delay(10); // Small delay to prevent high CPU usage
+                await Task.Delay(10); // Small delay to prevent high CPU usage (from chat gpt)
             }
         }
     }
