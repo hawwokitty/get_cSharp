@@ -4,12 +4,10 @@ namespace Snake
 {
     internal static class ConsoleLines
     {
-        private static string _greenSquareEmoji = "\U0001F7E9"; // Green Square 🟩
         public static void PrintMapAndSnake(Snake snake)
         {
             Console.Clear();
             DrawBorder();
-            //PrintSnakeHead(snake);
             PrintSnakeBody(snake);
 
         }
@@ -28,12 +26,6 @@ namespace Snake
             Console.SetCursorPosition(posX, posY);
             Console.Write(food.GetFoodIcon());
         }
-
-        //public static void PrintSnakeHead(Snake snake)
-        //{
-        //    Console.SetCursorPosition(snake.HeadPosX, snake.HeadPosY);
-        //    Console.Write(_greenSquareEmoji);
-        //}
 
         public static void DrawBorder()
         {
@@ -69,10 +61,11 @@ namespace Snake
             Console.Write('┘');
         }
 
-        public static void GameOver()
+        public static void GameOver(Snake snake)
         {
             Console.Clear();
             Console.Write(" $$$$$$\\   $$$$$$\\  $$\\      $$\\ $$$$$$$$\\        $$$$$$\\  $$\\    $$\\ $$$$$$$$\\ $$$$$$$\\  \r\n$$  __$$\\ $$  __$$\\ $$$\\    $$$ |$$  _____|      $$  __$$\\ $$ |   $$ |$$  _____|$$  __$$\\ \r\n$$ /  \\__|$$ /  $$ |$$$$\\  $$$$ |$$ |            $$ /  $$ |$$ |   $$ |$$ |      $$ |  $$ |\r\n$$ |$$$$\\ $$$$$$$$ |$$\\$$\\$$ $$ |$$$$$\\          $$ |  $$ |\\$$\\  $$  |$$$$$\\    $$$$$$$  |\r\n$$ |\\_$$ |$$  __$$ |$$ \\$$$  $$ |$$  __|         $$ |  $$ | \\$$\\$$  / $$  __|   $$  __$$< \r\n$$ |  $$ |$$ |  $$ |$$ |\\$  /$$ |$$ |            $$ |  $$ |  \\$$$  /  $$ |      $$ |  $$ |\r\n\\$$$$$$  |$$ |  $$ |$$ | \\_/ $$ |$$$$$$$$\\        $$$$$$  |   \\$  /   $$$$$$$$\\ $$ |  $$ |\r\n \\______/ \\__|  \\__|\\__|     \\__|\\________|       \\______/     \\_/    \\________|\\__|  \\__|");
+            Console.WriteLine($"\nYour snake length was: {snake.SnakeBody.Count}");
         }
     }
 }

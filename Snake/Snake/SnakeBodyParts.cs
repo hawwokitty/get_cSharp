@@ -10,6 +10,8 @@
             BodyPosX = bodyPosX;
             BodyPosY = bodyPosY;
         }
+
+
         public void SetPos(int x, int y)
         {
             BodyPosX = x;

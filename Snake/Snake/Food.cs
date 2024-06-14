@@ -15,7 +15,7 @@
             SetRandomFood();
         }
 
-        private string[] _foodEmojis = new string[]
+        private readonly string[] _foodEmojis = new string[]
         {
             "\U0001F34E", // Red Apple 🍎
             "\U0001F34F", // Green Apple 🍏
@@ -89,8 +89,8 @@
         };
         public void SetFoodPos()
         {
-            FoodPosX = random.Next(1, Console.WindowWidth-1);
-            FoodPosY = random.Next(1, Console.WindowHeight-1);
+            FoodPosX = random.Next(3, Console.WindowWidth-3);
+            FoodPosY = random.Next(3, Console.WindowHeight-3);
         }
 
         public void SetRandomFood()

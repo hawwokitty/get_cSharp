@@ -3,10 +3,7 @@
     internal class Snake
     {
         public bool IsAlive { get; set; }
-        //public int HeadPosX { get; private set; }
-        //public int HeadPosY { get; private set; }
         public int Speed { get; private set; }
-        //public int SnakeLength { get; private set; }
         public List<SnakeBodyParts> SnakeBody = new List<SnakeBodyParts>();
         Random random = new Random();
 
@@ -15,39 +12,33 @@
             int x = random.Next(1, Console.WindowWidth - 1);
             int y = random.Next(1, Console.WindowHeight - 1);
             SnakeBody.Add(new SnakeBodyParts(x, y));
-            //SnakeLength = SnakeBody.Count;
             IsAlive = true;
             Speed = 100;
         }
 
         public void Move(int x, int y)
         {
-            //HeadPosX += x;
-            //HeadPosY += y;
             SnakeBody[0].BodyPosX += x;
             SnakeBody[0].BodyPosY += y;
         }
 
-        public void MoveBody(int x, int y)
+        public void MoveBody()
         {
-            for (int i = 1; i < SnakeBody.Count; i++)
+            if (SnakeBody.Count > 1)
             {
-                SnakeBody[i].SetPos(SnakeBody[i - 1].BodyPosX - x, SnakeBody[i - 1].BodyPosY - y);
+                for (int i = SnakeBody.Count - 1; i > 0; i--)
+                {
+                    SnakeBody[i].SetPos(SnakeBody[i - 1].BodyPosX, SnakeBody[i - 1].BodyPosY);
+                }
+
             }
         }
 
         public void Grow((int X, int Y) previousMoveDone)
         {
-            //if (SnakeLength == 0)
-            //{
-            //    SnakeBody.Add(new SnakeBodyParts(HeadPosX - previousMoveDone.X, HeadPosY - previousMoveDone.Y));
-            //}
-            //else
-            //{
-            SnakeBody.Add(new SnakeBodyParts(SnakeBody[SnakeBody.Count - 1].BodyPosX - previousMoveDone.X, SnakeBody[SnakeBody.Count - 1].BodyPosY - previousMoveDone.Y));
-            //}
-
-            //SnakeLength++;
+            var x = SnakeBody[SnakeBody.Count - 1].BodyPosX - previousMoveDone.X;
+            var y = SnakeBody[SnakeBody.Count - 1].BodyPosY - previousMoveDone.Y;
+            SnakeBody.Add(new SnakeBodyParts(x, y));
             Speed--;
         }
     }

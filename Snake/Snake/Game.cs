@@ -18,7 +18,7 @@ namespace Snake
                 ConsoleLines.PrintFood(food.FoodPosX, food.FoodPosY, food);
                 snake.Move(_previousMoveDone.X, _previousMoveDone.Y);
                 CheckForInteraction(snake, food);
-                snake.MoveBody(_previousMoveDone.X, _previousMoveDone.Y);
+                snake.MoveBody();
                 if (food.IsEaten)
                 {
                     food = new Food();
@@ -26,18 +26,12 @@ namespace Snake
                 Thread.Sleep(snake.Speed);
             }
 
-            ConsoleLines.GameOver();
+            ConsoleLines.GameOver(snake);
         }
 
         private void CheckForInteraction(Snake snake, Food food)
         {
-            //foreach (var bodyPart in snake.SnakeBody)
-            //{
-            //    if (snake.HeadPosX == bodyPart.BodyPosX && snake.HeadPosY == bodyPart.BodyPosY)
-            //    {
-            //        snake.IsAlive = false;
-            //    }
-            //}
+            // check if crash with self
             if (snake.SnakeBody.Count >= 1)
             {
                 for (int i = 1; i < snake.SnakeBody.Count; i++)
@@ -51,25 +45,18 @@ namespace Snake
                 }
 
             }
+            // check if eat food
             if (snake.SnakeBody[0].BodyPosX == food.FoodPosX && snake.SnakeBody[0].BodyPosY == food.FoodPosY)
             {
                 snake.Grow(_previousMoveDone);
                 food.GetsEaten();
             }
+            // check if crash with wall
             else if (snake.SnakeBody[0].BodyPosX == Console.WindowWidth - 1 || snake.SnakeBody[0].BodyPosX == 1 ||
                      snake.SnakeBody[0].BodyPosY == Console.WindowHeight - 1 || snake.SnakeBody[0].BodyPosY == 1)
             {
                 snake.IsAlive = false;
             }
-            //if (snake.HeadPosX == food.FoodPosX && snake.HeadPosY == food.FoodPosY)
-            //{
-            //    snake.Grow(_previousMoveDone);
-            //    food.GetsEaten();
-            //} else if (snake.HeadPosX == Console.WindowWidth - 1 || snake.HeadPosX == 1 ||
-            //           snake.HeadPosY == Console.WindowHeight - 1 || snake.HeadPosY == 1)
-            //{
-            //    snake.IsAlive = false;
-            //} 
         }
 
 
