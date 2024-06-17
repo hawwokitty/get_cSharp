@@ -1,7 +1,8 @@
 ﻿
 using Sims;
 
-Console.WriteLine("Hello, welcome to The sims 0.00000002!");
+Game game = new Game();
+game.Run();
 Furniture list = new Furniture();
 list.InitializeFurniture();
 list.ShowFurniture("Kitchen");

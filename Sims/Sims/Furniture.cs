@@ -78,8 +78,7 @@ namespace Sims
             List<Furniture> furnitureList = _furniture.Where(f => f.Room == room).ToList();
             for (int i = 0; i < furnitureList.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. {furnitureList[i].FurnitureName}");
-                Console.WriteLine();
+                $"{i + 1}. {furnitureList[i].FurnitureName}".PrintToConsole();
             }
         }
 
