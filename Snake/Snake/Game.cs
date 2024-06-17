@@ -17,7 +17,7 @@ namespace Snake
                 ConsoleLines.PrintMapAndSnake(snake);
                 ConsoleLines.PrintFood(food.FoodPosX, food.FoodPosY, food);
                 snake.Move(_previousMoveDone.X, _previousMoveDone.Y);
-                CheckForInteraction(snake, food);
+                CheckForInteraction(snake, food, (_previousMoveDone.X, _previousMoveDone.Y));
                 snake.MoveBody();
                 if (food.IsEaten)
                 {
@@ -29,21 +29,19 @@ namespace Snake
             ConsoleLines.GameOver(snake);
         }
 
-        private void CheckForInteraction(Snake snake, Food food)
+        private void CheckForInteraction(Snake snake, Food food, (int X, int Y) prevMove)
         {
             // check if crash with self
-            if (snake.SnakeBody.Count >= 1)
+            if (snake.SnakeBody.Count >= 2)
             {
-                for (int i = 1; i < snake.SnakeBody.Count; i++)
+                for (int i = 2; i < snake.SnakeBody.Count; i++)
                 {
-                    if (snake.SnakeBody[0].BodyPosX == snake.SnakeBody[i].BodyPosX &&
-                        snake.SnakeBody[0].BodyPosY == snake.SnakeBody[i].BodyPosY)
+                    if (snake.SnakeBody[0].BodyPosX == (snake.SnakeBody[i].BodyPosX + prevMove.X) &&
+                        snake.SnakeBody[0].BodyPosY == (snake.SnakeBody[i].BodyPosY + prevMove.Y))
                     {
                         snake.IsAlive = false;
                     }
-                    
                 }
-
             }
             // check if eat food
             if (snake.SnakeBody[0].BodyPosX == food.FoodPosX && snake.SnakeBody[0].BodyPosY == food.FoodPosY)

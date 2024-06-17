@@ -12,6 +12,7 @@
             int x = random.Next(1, Console.WindowWidth - 1);
             int y = random.Next(1, Console.WindowHeight - 1);
             SnakeBody.Add(new SnakeBodyParts(x, y));
+            SnakeBody.Add(new SnakeBodyParts(x, y));
             IsAlive = true;
             Speed = 100;
         }
