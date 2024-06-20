@@ -11,7 +11,7 @@
                 "Hello, welcome to The sims 0.000420!".PrintToConsole();
                 "What would you like to do?".PrintToConsole();
                 ShowMenu();
-                int userChoice = ConsoleLines.RequestInt("Please enter a number of the menu above:", 3);
+                int userChoice = "Please enter a number of the menu above:".RequestInt(3);
                 switch (userChoice)
                 {
                     case 1:

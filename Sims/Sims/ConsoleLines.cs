@@ -30,7 +30,7 @@
                 Console.WriteLine(message);
                 input = Console.ReadLine();
 
-                isValidNum = int.TryParse(input, out output) && output > 0 && output < maxInt;
+                isValidNum = int.TryParse(input, out output) && output > 0 && output <= maxInt;
             }
 
             return output;

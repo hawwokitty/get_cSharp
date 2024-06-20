@@ -3,9 +3,9 @@
     internal class FamilyMember
     {
         private string? FirstName { get; set; }
-        private string? LastName { get; set;}
-        private bool IsAdult { get; set; } 
-        private string? Gender { get; set;}
+        private string? LastName { get; set; }
+        private bool IsAdult { get; set; }
+        private string? Gender { get; set; }
 
         public FamilyMember(string? firstName, string? lastName, bool isAdult, string gender)
         {
@@ -17,16 +17,17 @@
 
         public FamilyMember()
         {
-            
+
         }
 
         public void CreateFamilyMember()
         {
-            string? newFirstName = GetName("What is the character's first name?");
-            string? newLastName = GetName("What is the character's last name?");
+            string? newFirstName = "What is the character's first name?".RequestString();
+            string? newLastName = "What is the character's last name?".RequestString();
             bool newIsAdult = GetIsAdult();
             string newGender = GetGender();
             FamilyMember familyMember = new FamilyMember(newFirstName, newLastName, newIsAdult, newGender);
+            $"You created a new family member called {newFirstName}".PrintToConsole();
         }
 
         private string GetGender()
@@ -35,32 +36,21 @@
             Console.WriteLine("1. Male");
             Console.WriteLine("2. Female");
             Console.WriteLine("3. Other");
-            bool isValid = false;
-            string newGender = "";
-            string? input = Console.ReadLine();
-
-            while (!isValid)
+            string gender = "";
+            int userInput = "Please enter a number of the menu above:".RequestInt(3);
+            switch (userInput)
             {
-                if (int.TryParse(input, out int choice) && choice == 1 || choice == 2)
-                {
-                    if (choice == 1)
-                    {
-                        newGender = "Male";
-                    }
-                    else
-                    {
-                        newGender = "Female";
-                    }
-
-                    isValid = true;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid selection. Please try again.");
-                    input = Console.ReadLine();
-                }
+                case 1:
+                    gender = "Male";
+                    break;
+                case 2:
+                    gender = "Female";
+                    break;
+                case 3:
+                    gender = "Other";
+                    break;
             }
-            return newGender;
+            return gender;
         }
 
         private bool GetIsAdult()
@@ -68,40 +58,19 @@
             Console.WriteLine("The character is:");
             Console.WriteLine("1. An adult");
             Console.WriteLine("2. A child");
-            bool isValid = false;
-            bool newIsAdult = false;
-            string? input = Console.ReadLine();
-
-            while (!isValid)
+            bool isAdult = false;
+            int userInput = "Please enter a number of the menu above:".RequestInt(2);
+            switch (userInput)
             {
-                if (int.TryParse(input, out int choice) && choice == 1 || choice == 2)
-                {
-                    if (choice == 1)
-                    {
-                        newIsAdult = true;
-                    }
-                    else
-                    {
-                        newIsAdult = false;
-                    }
-
-                    isValid = true;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid selection. Please try again.");
-                    input = Console.ReadLine();
-                }
+                case 1:
+                    isAdult = true;
+                    break;
+                case 2:
+                    IsAdult = false;
+                    break;
             }
 
-            return newIsAdult;
-        }
-
-        private string? GetName(string question)
-        {
-            Console.WriteLine(question);
-            string? name = Console.ReadLine();
-            return name;
+            return isAdult;
         }
 
     }

@@ -1,6 +1,6 @@
 ﻿namespace Sims
 {
-    internal class Room
+    internal class Room : Furniture
     {
         private string RoomName { get; set; }
         private Furniture[] FurnitureArray { get; set; }
@@ -19,6 +19,11 @@
         public Room(string room, params string[] furniture)
         {
             RoomName = room;
+            
+        }
+
+        protected Room()
+        {
             
         }
     }
