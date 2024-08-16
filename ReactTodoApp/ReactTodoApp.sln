@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactTodoApp.Server", "ReactTodoApp.Server\ReactTodoApp.Server.csproj", "{19AC90E3-7AE8-4C50-B824-6AB49569F77E}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "reacttodoapp.client", "reacttodoapp.client\reacttodoapp.client.esproj", "{4C9A2D99-E559-4764-AC65-EEA450E0D9A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19AC90E3-7AE8-4C50-B824-6AB49569F77E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19AC90E3-7AE8-4C50-B824-6AB49569F77E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19AC90E3-7AE8-4C50-B824-6AB49569F77E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19AC90E3-7AE8-4C50-B824-6AB49569F77E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C9A2D99-E559-4764-AC65-EEA450E0D9A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C9A2D99-E559-4764-AC65-EEA450E0D9A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C9A2D99-E559-4764-AC65-EEA450E0D9A5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4C9A2D99-E559-4764-AC65-EEA450E0D9A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C9A2D99-E559-4764-AC65-EEA450E0D9A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C9A2D99-E559-4764-AC65-EEA450E0D9A5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB71B4EF-6B1D-48E2-ADD9-AD1A02C6F8EC}
+	EndGlobalSection
+EndGlobal

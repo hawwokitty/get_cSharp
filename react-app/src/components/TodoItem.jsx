@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function TodoItem(props) {
-// console.log(props.item);
 const item = props.item;
 const toggleTask = props.toggleTask;
 const deleteTask = props.deleteTask;
