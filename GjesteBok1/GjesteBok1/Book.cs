@@ -50,7 +50,7 @@
         {
             string name = "Please enter the full name of the person you are signing up:".RequestString();
             Guest newGuest = new Guest(name);
-            $"Successfully added ${name}".PrintToConsole();
+            $"Successfully added {name}".PrintToConsole();
             AddMore();
         }
 
